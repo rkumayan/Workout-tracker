@@ -13,10 +13,11 @@ let connectionString = 'mongodb://127.0.0.1/workout'
 mongoose.connect( connectionString)
     .then( () =>{
         //listen for workout requests 
-        app.use( '/api/workouts' , workout);
+        app.listen( process.env.PORT , ()=> console.log('listening at port 4000'));
+        
     })
     .catch( err =>{
         console.log( 'something went wrong in connecting to database');
     });
-
-app.listen( process.env.PORT , ()=> console.log('listening at port 4000'));
+// route for workout
+app.use( '/api/workouts' , workout);
