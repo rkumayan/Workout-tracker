@@ -21,7 +21,7 @@ const getSingleWorkout = async( req,res) =>{
     try{
         const workout = WorkoutModel.findById(id);
         if( !workout)
-            return res.status(400).send( {error : 'no such workout exists'})
+            return res.status(400).send( {error : 'no such workout exists'});
         
         const result = await WorkoutModel.find( { _id : id});
         res.send(result);

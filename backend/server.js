@@ -2,37 +2,21 @@ require('dotenv').config();
 const express = require('express'); 
 // express app
 const app = express();
-
 const workout = require('./routes/workout');
+const mongoose = require('mongoose');
 
 // middlewares
 app.use( express.json());
 
-//listen for workout requests requests
-app.use( '/workouts' , workout);
+// connect to database
+let connectionString = 'mongodb://127.0.0.1/workout'
+mongoose.connect( connectionString)
+    .then( () =>{
+        //listen for workout requests 
+        app.use( '/api/workouts' , workout);
+    })
+    .catch( err =>{
+        console.log( 'something went wrong in connecting to database');
+    });
 
-// GET all workouts
-app.get( "/", (req, res)=>{
-    res.send(" get all the workouts  ") ;
-})
-
-// GET a single workout by its id
-app.get( "/:id" , (req,res) =>{
-    res.send( " get a workout by its id");
-})
-
-// CREATE a new workout 
-app.post( "/" , (req,res) =>{
-    res.send( " POST a new workout");
-})
-
-// DELETE A WORKOUT
-app.delete( "/" , (req,res) =>{
-    res.send( " DELETE a new workout");
-})
-
-// UPDATE a workout by its id
-app.patch( "/:id" , (req,res) =>{
-    res.send( " UPDATE a workout by its id");
-})
 app.listen( process.env.PORT , ()=> console.log('listening at port 4000'));
