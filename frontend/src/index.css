@@ -1,0 +1,45 @@
+body{
+    background-color: #FAEFEB;
+    margin:0px;
+    font-family: roboto;
+}
+
+.navbar{
+    margin:0px;
+    padding:10px;
+    background:white;
+
+}
+.navbar h1{
+    color: black;
+    text-align: center;        
+}
+.navbar a{
+    text-decoration: none;
+}
+.workouts{
+    width:60%;
+    margin-left : 5%;
+}
+.workout-details{
+    width : 90%;
+    padding:10px 30px;
+    margin:40px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius:5px;
+}
+.workout-details:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    cursor:pointer;
+}
+.workout-title{
+    text-align:center;
+    margin:0px;
+    font-size : 22px;
+    color:#042940;
+    text-transform: capitalize;
+}
+.workout-details strong{
+    color: #042940;
+}
